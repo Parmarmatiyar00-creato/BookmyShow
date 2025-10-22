@@ -12,7 +12,7 @@ import java.awt.print.Book;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShowSeat {
+public class ShowSeat {  //Seats of show like Game of Thrones
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,6 +32,6 @@ public class ShowSeat {
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "booking_id")
+    @JoinColumn(name = "booking_id", nullable=false)
     private Booking booking;
 }

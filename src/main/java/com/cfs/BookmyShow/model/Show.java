@@ -19,10 +19,10 @@ public class Show {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private LocalDateTime startTime;   //particular show start time
 
     @Column(nullable = false)
-    private LocalDateTime endTime;
+    private LocalDateTime endTime;  //show end time
 
     @ManyToOne
     @JoinColumn(name = "movie_id", nullable = false)

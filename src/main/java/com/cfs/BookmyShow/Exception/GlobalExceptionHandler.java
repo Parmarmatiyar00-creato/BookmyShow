@@ -12,23 +12,23 @@ import java.util.Date;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException ex, WebRequest req){
+    public ResponseEntity<?> resourceNotFound(ResourceNotFoundException ex, WebRequest req){
         ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.value(),
-                "Not Found", ex.getMessage(), req.getDescription(false));
+                "NOT FOUND", ex.getMessage(), req.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(SeatUnavailException.class)
-    public ResponseEntity<?> seatUnavailableException(SeatUnavailException ex, WebRequest req){
-        ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.BAD_REQUEST.value(),
-                "Bad Request", ex.getMessage(), req.getDescription(false));
+    @ExceptionHandler(SeatUnavailableException.class)
+    public ResponseEntity<?> seatNotFound(SeatUnavailableException ex, WebRequest req){
+        ErrorResponse errorDetails= new ErrorResponse(new Date(), HttpStatus.BAD_REQUEST.value(),
+                "NOT FOUND", ex.getMessage(), req.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> globalExceptionalHandler(Exception ex, WebRequest req){
-        ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Server Error", ex.getMessage(), req.getDescription(false));
+    public ResponseEntity<?> globalExceptionHandler(Exception ex, WebRequest req){
+        ErrorResponse errorDetails= new ErrorResponse(new Date(), HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "INTERNAL SERVER ERROR", ex.getMessage(), req.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
